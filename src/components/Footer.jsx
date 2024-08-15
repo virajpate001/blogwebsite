@@ -1,11 +1,116 @@
-import React from 'react'
+import React from "react";
+import logo from "../assets/img/logo.png";
+import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div>
-      <h1>Footer</h1>
-    </div>
-  )
-}
+    <footer className="w-full py-10 border-t-2 mt-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 w-11/12 mx-auto pb-10">
+        <div className="mb-8 md:mb-0"> 
+          <img src={logo} alt="logo" className="w-40" />
+          <p className=" mb-5">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry.
+          </p>
+          <div className="flex gap-4">
+            <Link to="/">
+              <FaFacebook className=" text-2xl" />
+            </Link>
+            <Link to="/">
+              <FaInstagram className=" text-2xl" />
+            </Link>
+            <Link to="/">
+              <FaYoutube className=" text-2xl" />
+            </Link>
+          </div>
+        </div>
+        <div className="mb-8 md:mb-0">
+          <h2 className="mb-4 font-medium">Getting started</h2>
+          <ul>
+            <li className="mb-2">
+              <Link to="/" className=" text-sm">
+                Home
+              </Link>
+            </li>
+            <li className="mb-2">
+              <Link to="/" className=" text-sm">
+                Home
+              </Link>
+            </li>
+            <li className="mb-2">
+              <Link to="/" className=" text-sm">
+                Home
+              </Link>
+            </li>
+            <li className="mb-2">
+              <Link to="/" className=" text-sm">
+                Home
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="mb-8 md:mb-0">
+          <h2 className="mb-4 font-medium">Getting started</h2>
+          <ul>
+            <li className="mb-2">
+              <Link to="/" className=" text-sm">
+                Home
+              </Link>
+            </li>
+            <li className="mb-2">
+              <Link to="/" className=" text-sm">
+                Home
+              </Link>
+            </li>
+            <li className="mb-2">
+              <Link to="/" className=" text-sm">
+                Home
+              </Link>
+            </li>
+            <li className="mb-2">
+              <Link to="/" className=" text-sm">
+                Home
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div >
+          <h2 className="mb-4 font-medium">Getting started</h2>
+          <ul>
+            <li className="mb-2">
+              <Link to="/" className=" text-sm">
+                Home
+              </Link>
+            </li>
+            <li className="mb-2">
+              <Link to="/" className=" text-sm">
+                Home
+              </Link>
+            </li>
+            <li className="mb-2">
+              <Link to="/" className=" text-sm">
+                Home
+              </Link>
+            </li>
+            <li className="mb-2">
+              <Link to="/" className=" text-sm">
+                Home
+              </Link>
+            </li>
+          </ul>
+        </div>
+        
+      </div>
 
-export default Footer
+      <div className="w-11/12 mx-auto border-t-2 pt-6">
+        <p className=" text-center">
+          Copywrite reserver by <Link to="/">Blog</Link> . Developed by{" "}
+          <Link to="/">Viraj Pate</Link>{" "}
+        </p>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

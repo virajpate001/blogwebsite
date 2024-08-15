@@ -11,3 +11,9 @@ body{
     --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
+
+.stick{
+  position: fixed;
+  transition: position 1s ease-in-out;
+    z-index: 99;
+}

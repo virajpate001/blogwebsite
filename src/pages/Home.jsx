@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 
-import Articles from '../components/Articles'
-import { Link } from 'react-router-dom'
+import Articles from "../components/Articles";
+import { Link } from "react-router-dom";
+import { Button } from "@material-tailwind/react";
 
 function Home() {
-	return (
-		<>
-			<h1 className="mt-2">Home</h1>
+  return (
+    <>
+      
 
-			<Link to="/blog">Blog</Link>
+     
 
-			<Articles />
-		</>
-	)
+      <Articles />
+    </>
+  );
 }
 
-export default Home
+export default Home;
