@@ -1,0 +1,13 @@
+body{
+    background-color: #f8f8f8;
+}
+
+.active{
+    --tw-bg-opacity: 1;
+    background-color: rgb(147 51 234 / var(--tw-bg-opacity));
+    
+    border-radius: 9999px;
+    font-weight: 700;
+    --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}

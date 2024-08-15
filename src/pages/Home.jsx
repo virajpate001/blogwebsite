@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const Home = () => {
-  return (
-    <div>
-      <h1 className='text-3xl font-bold underline'>Home</h1>
-      <p className=' text-lg font-semibold text-yellow-400'>This os test</p>
-    </div>
-  )
+import Articles from '../components/Articles'
+import { Link } from 'react-router-dom'
+
+function Home() {
+	return (
+		<>
+			<h1 className="mt-2">Home</h1>
+
+			<Link to="/blog">Blog</Link>
+
+			<Articles />
+		</>
+	)
 }
 
 export default Home
