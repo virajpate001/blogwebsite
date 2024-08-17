@@ -7,11 +7,10 @@ import { Button } from "@material-tailwind/react";
 function Home() {
   return (
     <>
-      
 
-     
-
+      <div className=" py-16">
       <Articles />
+      </div>
     </>
   );
 }
