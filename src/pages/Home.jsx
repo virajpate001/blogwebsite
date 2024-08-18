@@ -9,8 +9,8 @@ function Home() {
     <>
       
 
-     
-
+      <h1>Home</h1>
+      <div className=" py-16">
       <Articles />
       </div>
     </>
