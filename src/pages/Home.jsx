@@ -7,10 +7,8 @@ import { Button } from "@material-tailwind/react";
 function Home() {
   return (
     <>
-      
-
      
-
+      <h1>Home</h1>
       <Articles />
     </>
   );
