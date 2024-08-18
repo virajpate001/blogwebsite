@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { fetchArticles } from '../services/api'
+import { fetchArticles, fetchArticlespagination } from '../services/api'
 import { Link } from 'react-router-dom'
 import Pagination from './Pagination'
 
@@ -7,12 +7,12 @@ function Articles() {
 	const [articles, setArticle] = useState([])
 	const [error, setError] = useState('')
 	const [cpage, setPage] = useState(1)
-	const pageSize = 6
+	const pageSize = 8
 
 	useEffect(() => {
 		const getArticle = async () => {
 			try {
-				const getarticles = await fetchArticles(cpage, pageSize)
+				const getarticles = await fetchArticlespagination(cpage, pageSize)
 				setArticle(getarticles)
 			} catch (error) {
 				setError(error.message)
@@ -39,15 +39,15 @@ function Articles() {
 		<>
 			<div className="m-auto w-11/12 ">
 				<ul className=" grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
-					{articles.map((article) => {
+					{articles.map((article, index) => {
 						return (
-							<li key={article.id}>
+							<li key={index}>
 								<div className="rounded-xl shadow-md">
 									<div className="relative">
 										<Link to={`/post/${article.id}`}>
 											<img
-												src={article.img_url}
-												alt={article.title}
+												src={article.attributes.profile_img}
+												alt={article.attributes.Title}
 												className="w-full h-60 aspect-square object-cover"
 											/>
 										</Link>
@@ -67,7 +67,7 @@ function Articles() {
 											</div>
 											<div>
 												<h2 className="text-lg font-medium leading-5">
-													{article.title.slice(0, 60)}
+													{article.attributes.Title}
 													...
 												</h2>
 											</div>

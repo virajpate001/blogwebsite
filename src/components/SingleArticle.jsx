@@ -33,8 +33,8 @@ function SingleArticle() {
 			<div className="w-full px-4 py-4">
 				<div className="m-auto w-full bg-cover  text-center text-white">
 					<img
-						src={singleArticle.img_url}
-						alt=""
+						src={singleArticle.attributes.profile_img}
+						alt={singleArticle.attributes.Title}
 						className=" rounded-3xl w-full"
 					/>
 				</div>
@@ -59,11 +59,11 @@ function SingleArticle() {
 					</div>
 				</div>
 				<h1 className="text-2xl sm:text-3xl font-semibold my-3">
-					{singleArticle.title}
+					{singleArticle.attributes.Title}
 				</h1>
 				<div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
 				<div className="text-neutral-500 py-4">
-					{singleArticle.body}
+					{singleArticle.attributes.Description}
 				</div>
 			</div>
 		</>
