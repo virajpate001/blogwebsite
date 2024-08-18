@@ -46,7 +46,7 @@ function Articles() {
 									<div className="relative">
 										<Link to={`/post/${article.id}`}>
 											<img
-												src={article.attributes.profile_img}
+												src={article.attributes.profile_img.data.attributes.url}
 												alt={article.attributes.Title}
 												className="w-full h-60 aspect-square object-cover"
 											/>

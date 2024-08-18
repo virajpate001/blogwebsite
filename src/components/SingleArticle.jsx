@@ -33,7 +33,7 @@ function SingleArticle() {
 			<div className="w-full px-4 py-4">
 				<div className="m-auto w-full bg-cover  text-center text-white">
 					<img
-						src={singleArticle.attributes.profile_img}
+						src={singleArticle.attributes.profile_img.data.attributes.url}
 						alt={singleArticle.attributes.Title}
 						className=" rounded-3xl w-full"
 					/>
@@ -42,7 +42,7 @@ function SingleArticle() {
 
 			<div className="m-auto w-4/5 my-4">
 				<div className="category">
-					<div class="mb-2 flex justify-between gap-4 items-center">
+					<div className="mb-2 flex justify-between gap-4 items-center">
 						<Link
 							to="#"
 							className="rounded-3xl bg-yellow-400 px-3 py-0.5 text-sm"

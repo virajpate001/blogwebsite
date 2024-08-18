@@ -13,6 +13,7 @@ const Testing = () => {
       try {
         const getarticles = await fetchArticlespagination(1,5);
         setMydata(getarticles);
+        console.log(myData)
       
       } catch (error) {
         setError(error.message);
