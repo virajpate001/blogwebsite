@@ -2,6 +2,8 @@ import axios from 'axios'
 
 const API_URL = 'http://localhost:1337/api/articles'
 
+const API_URL_CAT = 'http://localhost:1337/api/categories'
+
 
 
 export const fetchArticles = async (pageNumber, itemsPerPage) => {
@@ -49,7 +51,31 @@ export const fetchSingleArticle = async (id) => {
 }
 
 
-export const fetchArticleCount = async () => {
-	const response = await axios.get(`${API_URL}/count`);
-	return response.data;
-  };
+export const fetchCategories = async () =>{
+  
+	try{
+        const response = await axios.get(`${API_URL_CAT}`)
+		return response.data.data
+		
+	}
+	catch(error){
+       throw new Error('Data not Found')
+	}
+}
+
+
+export const fetchSingleCategory = async (slug) =>{
+	try{
+         const response = await axios.get(`${API_URL_CAT}?slug=${slug}`)
+		 return response.data.data
+	}
+	catch(error){
+      throw new Error("Data Not Found")
+	}
+}
+
+
+// export const fetchArticleCount = async () => {
+// 	const response = await axios.get(`${API_URL}/count`);
+// 	return response.data;
+//   };

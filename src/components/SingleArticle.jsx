@@ -12,6 +12,7 @@ function SingleArticle() {
 			try {
 				const getArticle = await fetchSingleArticle(id)
 				setSingleArticle(getArticle)
+				
 			} catch (error) {
 				setError(error.message)
 			}
@@ -65,6 +66,12 @@ function SingleArticle() {
 				<div className="text-neutral-500 py-4">
 					{singleArticle.attributes.Description}
 				</div>
+				
+
+
+
+				{console.log(singleArticle)}
+
 			</div>
 		</>
 	)
