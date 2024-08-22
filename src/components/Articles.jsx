@@ -53,11 +53,11 @@ function Articles() {
                         className="w-full h-60 aspect-square object-cover"
                       />
                     </Link>
-                    <span className="category absolute left-2 top-2 rounded-3xl bg-yellow-400 px-3 py-0.5 text-sm">
+                    {/* <span className="category absolute left-2 top-2 rounded-3xl bg-yellow-400 px-3 py-0.5 text-sm">
                       {article.attributes.category
                         ? article.attributes.category.data.attributes.name
                         : "Unaurthorise"}
-                    </span>
+                    </span> */}
                   </div>
                   <Link to={`/post/${article.id}`}>
                     <div className="px-4 py-6">

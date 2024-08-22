@@ -17,10 +17,9 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FaXmark } from "react-icons/fa6";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { CiMenuFries } from "react-icons/ci";
-import logo from "../assets/img/logo.png"
+import logo from "../assets/img/logo.png";
 import { Link } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
-
 
 const nestedMenuItems = [
   {
@@ -99,8 +98,12 @@ function NavListMenu() {
             </MenuHandler>
             <MenuList className="rounded-xl">{renderItems}</MenuList>
           </Menu>
-          <MenuItem>React</MenuItem>
-          <MenuItem>TailwindCSS</MenuItem>
+          <MenuItem>
+            <Link to={"/category/sport"}>Sport</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to={"/category/learning"}>Learning</Link>
+          </MenuItem>
         </MenuList>
       </Menu>
       <div className="block text-black lg:hidden">
@@ -138,10 +141,25 @@ function NavListMenu() {
 function NavList() {
   return (
     <List className="mb-6 mt-4 p-0 lg:mb-0 lg:mt-0 lg:flex-row lg:p-1">
-      <Link to="/" className="flex items-center gap-2 py-2  px-4 text-black font-medium hover:bg-slate-100 hover:rounded-3xl">Home</Link>
-      <Link to="about" className="flex items-center gap-2 py-2 px-4 text-black  font-medium hover:bg-slate-100 hover:rounded-3xl">About</Link>
+      <Link
+        to="/"
+        className="flex items-center gap-2 py-2  px-4 text-black font-medium hover:bg-slate-100 hover:rounded-3xl"
+      >
+        Home
+      </Link>
+      <Link
+        to="about"
+        className="flex items-center gap-2 py-2 px-4 text-black  font-medium hover:bg-slate-100 hover:rounded-3xl"
+      >
+        About
+      </Link>
       <NavListMenu />
-      <Link to="about" className="flex items-center gap-2 py-2 px-4 text-black font-medium hover:bg-slate-100 hover:rounded-3xl">Contact</Link>
+      <Link
+        to="about"
+        className="flex items-center gap-2 py-2 px-4 text-black font-medium hover:bg-slate-100 hover:rounded-3xl"
+      >
+        Contact
+      </Link>
     </List>
   );
 }
@@ -150,7 +168,6 @@ export default function NavigationbarWithDropdownMultilevelMenu() {
   const [openNav, setOpenNav] = React.useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -161,11 +178,8 @@ export default function NavigationbarWithDropdownMultilevelMenu() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-
-    
+    window.addEventListener("scroll", handleScroll);
   }, []);
-
 
   React.useEffect(() => {
     window.addEventListener(
@@ -175,18 +189,20 @@ export default function NavigationbarWithDropdownMultilevelMenu() {
   }, []);
 
   return (
-    <Navbar  className={`${scrolled ? 'stick' : ''} mx-auto  px-4 py-2 bg-white rounded-none head`}>
+    <Navbar
+      className={`${
+        scrolled ? "stick" : ""
+      } mx-auto  px-4 py-2 bg-white rounded-none head`}
+    >
       <div className="flex items-center justify-between w-11/12 mx-auto">
-        
-        <img src={logo} className=" w-36" alt="logo"/>
+        <img src={logo} className=" w-36" alt="logo" />
         <div className="hidden lg:block">
           <NavList />
         </div>
         <div className="hidden gap-2 lg:flex">
-        
-        <button><CiSearch className=" text-black text-2xl" /></button>
-
-         
+          <button>
+            <CiSearch className=" text-black text-2xl" />
+          </button>
         </div>
         <IconButton
           variant="text"
@@ -202,7 +218,6 @@ export default function NavigationbarWithDropdownMultilevelMenu() {
       </div>
       <Collapse open={openNav}>
         <NavList />
-      
       </Collapse>
     </Navbar>
   );
