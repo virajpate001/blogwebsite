@@ -30,6 +30,7 @@ function SingleArticle() {
 
   return (
     <>
+      {/* {console.log(singleArticle.attributes.category.data.attributes.Name)} */}
       <div className="w-full px-4 py-4">
         <div className="m-auto w-full bg-cover  text-center text-white">
           <img
@@ -44,10 +45,16 @@ function SingleArticle() {
         <div className="category">
           <div className="mb-2 flex justify-between gap-4 items-center">
             <Link
-              to="#"
+              to={
+                singleArticle.attributes.category.data
+                  ? `/category/${singleArticle.attributes.category.data.attributes.slug}`
+                  : `#`
+              }
               className="rounded-3xl bg-yellow-400 px-3 py-0.5 text-sm"
             >
-              Industrial
+              {singleArticle.attributes.category.data
+                ? singleArticle.attributes.category.data.attributes.Name
+                : "Category"}
             </Link>
 
             <div className="flex gap-4">
@@ -63,8 +70,6 @@ function SingleArticle() {
         <div className="text-neutral-500 py-4">
           {singleArticle.attributes.Description}
         </div>
-
-        {console.log(singleArticle)}
       </div>
     </>
   );
