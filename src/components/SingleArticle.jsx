@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 function SingleArticle() {
   const { id } = useParams();
   const [singleArticle, setSingleArticle] = useState("");
+  const [showcategories, setShowCategorie] = useState([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -46,14 +47,14 @@ function SingleArticle() {
           <div className="mb-2 flex justify-between gap-4 items-center">
             <Link
               to={
-                singleArticle.attributes.category.data
-                  ? `/category/${singleArticle.attributes.category.data.attributes.slug}`
+                singleArticle.attributes.categories.data[0]
+                  ? `/category/${singleArticle.attributes.categories.data[0].attributes.slug}`
                   : `#`
               }
               className="rounded-3xl bg-yellow-400 px-3 py-0.5 text-sm"
             >
-              {singleArticle.attributes.category.data
-                ? singleArticle.attributes.category.data.attributes.Name
+              {singleArticle.attributes.categories.data[0]
+                ? singleArticle.attributes.categories.data[0].attributes.Name
                 : "Category"}
             </Link>
 

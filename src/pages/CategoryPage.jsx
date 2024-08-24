@@ -26,11 +26,12 @@ const CategoryPage = () => {
         // Fetch the articles related to this category
 
         const catid = response[0];
+        console.log(category);
 
         // const articlesResponse = await axios.get(`http://localhost:1337/articles?category=${catid.id}`)
 
         const articlesResponse = await axios.get(
-          `http://localhost:1337/api/articles?populate=*&filters[category][id][$eq]=${catid.id}`
+          `http://localhost:1337/api/articles?populate=*&filters[categories][id][$eq]=${catid.id}`
         );
 
         setArticle(articlesResponse.data.data);
