@@ -19,7 +19,7 @@ function Filter() {
     const getCategories = async () => {
       try {
         const getCategory = await fetchCategories();
-        // console.log(getCategory);
+        console.log(getCategory);
         setCategories(getCategory);
       } catch (error) {
         console.log(error);
@@ -86,7 +86,10 @@ function Filter() {
                       <li key={allcategories.id} className="flex">
                         <Link to={`/category/${allcategories.attributes.slug}`}>
                           <img
-                            src="https://thewebdecor.com/store/wp-content/uploads/2024/02/cate-home5-1.jpg"
+                            src={
+                              allcategories.attributes.cat_img.data.attributes
+                                .url
+                            }
                             alt=""
                             className="w-12 rounded-lg mr-4"
                           />
