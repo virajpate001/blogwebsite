@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 
 function SingleArticle() {
   const { id } = useParams();
-  const [singleArticle, setSingleArticle] = useState("");
+  const [singleArticle, setSingleArticle] = useState(null); // Initialized as null for better conditional rendering
   const [showcategories, setShowCategorie] = useState([]);
   const [error, setError] = useState("");
 
@@ -21,6 +21,12 @@ function SingleArticle() {
     getsArticle();
   }, [id]);
 
+  useEffect(() => {
+    if (singleArticle) {
+      setShowCategorie(singleArticle.attributes.categories.data);
+    }
+  }, [singleArticle]);
+
   if (!singleArticle && !error) {
     return <div>Loading....</div>;
   }
@@ -31,13 +37,12 @@ function SingleArticle() {
 
   return (
     <>
-      {/* {console.log(singleArticle.attributes.category.data.attributes.Name)} */}
       <div className="w-full px-4 py-4">
-        <div className="m-auto w-full bg-cover  text-center text-white">
+        <div className="m-auto w-full bg-cover text-center text-white">
           <img
             src={singleArticle.attributes.profile_img.data.attributes.url}
             alt={singleArticle.attributes.Title}
-            className=" rounded-3xl w-full"
+            className="rounded-3xl w-full"
           />
         </div>
       </div>
@@ -45,18 +50,26 @@ function SingleArticle() {
       <div className="m-auto w-4/5 my-4">
         <div className="category">
           <div className="mb-2 flex justify-between gap-4 items-center">
-            <Link
-              to={
-                singleArticle.attributes.categories.data[0]
-                  ? `/category/${singleArticle.attributes.categories.data[0].attributes.slug}`
-                  : `#`
-              }
-              className="rounded-3xl bg-yellow-400 px-3 py-0.5 text-sm"
-            >
-              {singleArticle.attributes.categories.data[0]
-                ? singleArticle.attributes.categories.data[0].attributes.Name
-                : "Category"}
-            </Link>
+            {showcategories.length === 0 ? (
+              <ul>
+                <li className="rounded-3xl bg-yellow-400 px-4 py-2 text-sm">
+                  unauthorized
+                </li>
+              </ul>
+            ) : (
+              <ul className="flex gap-2">
+                {showcategories.map((catlist) => (
+                  <li key={catlist.id}>
+                    <Link
+                      to={`/category/${catlist.attributes.slug}`}
+                      className="rounded-3xl bg-yellow-400 px-4 py-2 text-sm"
+                    >
+                      {catlist.attributes.Name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
 
             <div className="flex gap-4">
               <p className="name">Viraj Pate</p>
