@@ -3,7 +3,7 @@ import { fetchSingleArticle } from "../services/api";
 import { Link, useParams } from "react-router-dom";
 
 function SingleArticle() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [singleArticle, setSingleArticle] = useState(null); // Initialized as null for better conditional rendering
   const [showcategories, setShowCategorie] = useState([]);
   const [error, setError] = useState("");
@@ -11,15 +11,16 @@ function SingleArticle() {
   useEffect(() => {
     const getsArticle = async () => {
       try {
-        const getArticle = await fetchSingleArticle(id);
+        const getArticle = await fetchSingleArticle(slug);
         setSingleArticle(getArticle);
+        console.log(getArticle);
       } catch (error) {
         setError(error.message);
       }
     };
 
     getsArticle();
-  }, [id]);
+  }, [slug]);
 
   useEffect(() => {
     if (singleArticle) {

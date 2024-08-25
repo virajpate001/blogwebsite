@@ -46,13 +46,14 @@ function Articles() {
               <li key={index}>
                 <div className="rounded-xl shadow-md">
                   <div className="relative">
-                    <Link to={`/post/${article.id}`}>
+                    <Link to={`/post/${article.attributes.slug}`}>
                       <img
                         src={article.attributes.profile_img.data.attributes.url}
                         alt={article.attributes.Title}
                         className="w-full h-60 aspect-square object-cover"
                       />
                     </Link>
+
                     {/* <span className="category absolute left-2 top-2 rounded-3xl bg-yellow-400 px-3 py-0.5 text-sm">
                       {article.attributes.category
                         ? article.attributes.category.data.attributes.name

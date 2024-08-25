@@ -54,7 +54,7 @@ const CategoryPage = () => {
               <li key={index}>
                 <div className="rounded-xl shadow-md">
                   <div className="relative">
-                    <Link to={`/post/${article.id}`}>
+                    <Link to={`/post/${article.attributes.slug}`}>
                       <img
                         src={article.attributes.profile_img.data.attributes.url}
                         alt={article.attributes.Title}

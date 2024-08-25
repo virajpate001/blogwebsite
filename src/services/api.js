@@ -35,10 +35,12 @@ export const fetchAllArticles = async () => {
   }
 };
 
-export const fetchSingleArticle = async (id) => {
+export const fetchSingleArticle = async (slug) => {
   try {
-    const response = await axios.get(`${API_URL}/${id}?populate=*&`);
-    return response.data.data;
+    const response = await axios.get(
+      `${API_URL}?filters[slug][$eq]=${slug}&populate=*`
+    );
+    return response.data.data[0];
   } catch (error) {
     throw new Error("Data not found...");
   }

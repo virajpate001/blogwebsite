@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         element: <Testing />,
       },
       {
-        path: `/post/:id`,
+        path: `/post/:slug`,
         element: <SingleArticle />,
       },
       {
