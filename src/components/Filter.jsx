@@ -9,11 +9,12 @@ import { IoCloseOutline } from "react-icons/io5";
 
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { fetchCategories } from "../services/api";
+import { fetchCategories, fetchTags } from "../services/api";
 
 function Filter() {
   const [open, setOpen] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [tags, setTags] = useState([]);
 
   useEffect(() => {
     const getCategories = async () => {
@@ -26,7 +27,17 @@ function Filter() {
       }
     };
 
+    const getTags = async () => {
+      try {
+        const getTags = await fetchTags();
+        setTags(getTags);
+      } catch (error) {
+        setError(error);
+      }
+    };
+
     getCategories();
+    getTags();
   }, []);
 
   return (
@@ -44,6 +55,18 @@ function Filter() {
             <MdKeyboardArrowDown className="inline-block  ml-3" />
           </button>
         </div>
+      </div>
+
+      <div>
+        <ul className=" bg-slate-300">
+          {tags.map((tags) => (
+            <li key={tags.id}>
+              <Link to={`/category/${tags.attributes.slug}`}>
+                {tags.attributes.Name}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <Dialog open={open} onClose={setOpen} className="relative z-10">

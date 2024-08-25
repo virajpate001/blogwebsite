@@ -4,6 +4,8 @@ const API_URL = "http://localhost:1337/api/articles";
 
 const API_URL_CAT = "http://localhost:1337/api/categories";
 
+const API_URL_TAGS = "http://localhost:1337/api/tags";
+
 export const fetchArticles = async (pageNumber, itemsPerPage) => {
   try {
     const response = await axios.get(
@@ -49,6 +51,15 @@ export const fetchSingleArticle = async (slug) => {
 export const fetchCategories = async () => {
   try {
     const response = await axios.get(`${API_URL_CAT}?populate=*`);
+    return response.data.data;
+  } catch (error) {
+    throw new Error("Data not Found");
+  }
+};
+
+export const fetchTags = async () => {
+  try {
+    const response = await axios.get(`${API_URL_TAGS}?populate=*`);
     return response.data.data;
   } catch (error) {
     throw new Error("Data not Found");

@@ -14,6 +14,7 @@ import Blog from "./pages/Blog.jsx";
 import BrakeLink from "./pages/404.jsx";
 import Testing from "./pages/Testing.jsx";
 import CategoryPage from "./pages/CategoryPage.jsx";
+import TagsPage from "./pages/TagsPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: `/category/:slug`,
         element: <CategoryPage />,
+      },
+      {
+        path: `/tags/:slug`,
+        element: <TagsPage />,
       },
       {
         path: "blog",
