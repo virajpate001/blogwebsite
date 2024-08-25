@@ -26,7 +26,6 @@ const CategoryPage = () => {
         // Fetch the articles related to this category
 
         const catid = response[0];
-        console.log(category);
 
         // const articlesResponse = await axios.get(`http://localhost:1337/articles?category=${catid.id}`)
 
