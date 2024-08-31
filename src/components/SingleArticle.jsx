@@ -51,7 +51,7 @@ function SingleArticle() {
       </div>
 
       <div className="m-auto w-4/5 my-4">
-        <div className="category">
+        <div className="category mb-8">
           <div className="mb-2 flex justify-between gap-4 items-center">
             {showcategories.length === 0 ? (
               <ul>
@@ -76,7 +76,16 @@ function SingleArticle() {
 
             <div className="flex gap-4">
               <p className="name">Viraj Pate</p>
-              <p className="date text-sm text-gray-500">May 20, 2021</p>
+              {/* <p className="date text-sm text-gray-500">May 20, 2021</p> */}
+              {/* {singleArticle.attributes.createdAt} */}
+
+              {new Date(
+                singleArticle.attributes.publishedAt
+              ).toLocaleDateString("en-US", {
+                month: "long", // Full month name
+                day: "numeric", // Numeric day
+                year: "numeric", // Full year
+              })}
             </div>
           </div>
         </div>
