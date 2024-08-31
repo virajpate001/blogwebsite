@@ -39,7 +39,6 @@ function Articles() {
   return (
     <>
       <div className="m-auto w-11/12 ">
-        {console.log(articles)}
         <ul className=" grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
           {articles.map((article, index) => {
             return (
@@ -53,14 +52,8 @@ function Articles() {
                         className="w-full h-60 aspect-square object-cover"
                       />
                     </Link>
-
-                    {/* <span className="category absolute left-2 top-2 rounded-3xl bg-yellow-400 px-3 py-0.5 text-sm">
-                      {article.attributes.category
-                        ? article.attributes.category.data.attributes.name
-                        : "Unaurthorise"}
-                    </span> */}
                   </div>
-                  <Link to={`/post/${article.id}`}>
+                  <Link to={`/post/${article.attributes.slug}`}>
                     <div className="px-4 py-6">
                       <div className="mb-2 flex justify-between">
                         <p className="name">Viraj Pate</p>

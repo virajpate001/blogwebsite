@@ -6,6 +6,7 @@ function SingleArticle() {
   const { slug } = useParams();
   const [singleArticle, setSingleArticle] = useState(null); // Initialized as null for better conditional rendering
   const [showcategories, setShowCategorie] = useState([]);
+  const [showTags, setShowTags] = useState([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -13,7 +14,6 @@ function SingleArticle() {
       try {
         const getArticle = await fetchSingleArticle(slug);
         setSingleArticle(getArticle);
-        console.log(getArticle);
       } catch (error) {
         setError(error.message);
       }
@@ -24,9 +24,11 @@ function SingleArticle() {
 
   useEffect(() => {
     if (singleArticle) {
+      console.log(singleArticle);
       setShowCategorie(singleArticle.attributes.categories.data);
+      setShowTags(singleArticle.attributes.tags.data);
     }
-  }, [singleArticle]);
+  }, [singleArticle, showTags]);
 
   if (!singleArticle && !error) {
     return <div>Loading....</div>;
@@ -84,6 +86,31 @@ function SingleArticle() {
         <div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
         <div className="text-neutral-500 py-4">
           {singleArticle.attributes.Description}
+        </div>
+
+        <div className="tags mt-4">
+          <div className="mb-2 flex justify-between gap-4 items-center">
+            {showTags.length === 0 ? (
+              <ul>
+                <li className="rounded-3xl bg-yellow-400 px-4 py-2 text-sm">
+                  notag
+                </li>
+              </ul>
+            ) : (
+              <ul className="flex gap-2">
+                {showTags.map((taglist) => (
+                  <li key={taglist.id}>
+                    <Link
+                      to={`/tags/${taglist.attributes.slug}`}
+                      className="rounded-xl bg-white hover:bg-neutral-50 px-4 py-2 text-sm"
+                    >
+                      {taglist.attributes.Name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
     </>
