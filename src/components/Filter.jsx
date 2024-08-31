@@ -61,7 +61,7 @@ function Filter() {
         <ul className=" bg-slate-300">
           {tags.map((tags) => (
             <li key={tags.id}>
-              <Link to={`/category/${tags.attributes.slug}`}>
+              <Link to={`/tags/${tags.attributes.slug}`}>
                 {tags.attributes.Name}
               </Link>
             </li>

@@ -14,11 +14,6 @@ const CategoryPage = () => {
     const getSingleCategory = async () => {
       try {
         const response = await fetchSingleCategory(slug);
-
-        // const response = await axios.get(
-        //   `http://localhost:1337/api/categories?filters[slug][$eq]=${slug}&populate=*`
-        // );
-
         const category = response[0].attributes;
         const categoryName = category.Name;
         setCategoryName(categoryName);
@@ -26,8 +21,6 @@ const CategoryPage = () => {
         // Fetch the articles related to this category
 
         const catid = response[0];
-
-        // const articlesResponse = await axios.get(`http://localhost:1337/articles?category=${catid.id}`)
 
         const articlesResponse = await axios.get(
           `http://localhost:1337/api/articles?populate=*&filters[categories][id][$eq]=${catid.id}`

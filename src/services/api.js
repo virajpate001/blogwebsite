@@ -77,6 +77,17 @@ export const fetchSingleCategory = async (slug) => {
   }
 };
 
+export const fetchSingleTag = async (slug) => {
+  try {
+    const response = await axios.get(
+      `${API_URL_TAGS}?filters[slug][$eq]=${slug}&populate=*`
+    );
+    return response.data.data;
+  } catch (error) {
+    throw new Error("Data Not Found");
+  }
+};
+
 // export const fetchArticleCount = async () => {
 // 	const response = await axios.get(`${API_URL}/count`);
 // 	return response.data;
