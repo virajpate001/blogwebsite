@@ -6,6 +6,9 @@ import {
   fetchSingleArticle,
 } from "../services/api";
 import { Link, useParams } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw"; // Import rehype-raw plugin to allow HTML parsing
+import rehypeSanitize from "rehype-sanitize";
 import RecentPost from "./RecentPost";
 import BlogCard from "./BlogCard";
 
@@ -77,6 +80,7 @@ function SingleArticle() {
     return <div>{error}</div>;
   }
 
+  const contentMarkdown = singleArticle.attributes.content;
   return (
     <>
       <div className="w-full px-4 py-4">
@@ -137,7 +141,10 @@ function SingleArticle() {
             </h1>
             <div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
             <div className="text-neutral-500 py-4">
-              {singleArticle.attributes.Description}
+              {/* {singleArticle.attributes.content} */}
+              <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                {contentMarkdown}
+              </ReactMarkdown>
             </div>
 
             <div className="tags mt-4">

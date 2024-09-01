@@ -25,8 +25,8 @@ const BlogCard = ({ articles }) => {
                       <p className="date text-sm text-gray-500">May 20, 2021</p>
                     </div>
                     <div>
-                      <h2 className="text-lg font-medium leading-5">
-                        {article.attributes.Title}
+                      <h2 className="text-lg font-medium leading-6">
+                        {article.attributes.Title.slice(0, 60)}
                         ...
                       </h2>
                     </div>
