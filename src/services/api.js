@@ -98,3 +98,15 @@ export const fetchRecentArticles = async () => {
     throw new Error("Data Not Found");
   }
 };
+
+export const fetchRelatedArticle = async (categories, currentArticleId) => {
+  try {
+    const response = await axios.get(
+      `${API_URL}?filters[categories][id][$in]=${categories.join(
+        ","
+      )}&filters[id][$ne]=${currentArticleId}&populate=*&pagination[limit]=4`
+    );
+
+    return response.data.data;
+  } catch (error) {}
+};

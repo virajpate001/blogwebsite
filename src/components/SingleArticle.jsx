@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import {
   fetchCategories,
   fetchRecentArticles,
+  fetchRelatedArticle,
   fetchSingleArticle,
 } from "../services/api";
 import { Link, useParams } from "react-router-dom";
 import RecentPost from "./RecentPost";
+import BlogCard from "./BlogCard";
 
 function SingleArticle() {
   const { slug } = useParams();
@@ -15,12 +17,22 @@ function SingleArticle() {
   const [error, setError] = useState("");
   const [rPost, setRpost] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [relatedPost, setRelatedPost] = useState([]);
 
   useEffect(() => {
     const getsArticle = async () => {
       try {
         const getArticle = await fetchSingleArticle(slug);
         setSingleArticle(getArticle);
+
+        // Fetch related articles based on categories
+
+        const categoryIds = getArticle.attributes.categories.data.map(
+          (cat) => cat.id
+        );
+
+        const related = await fetchRelatedArticle(categoryIds, getArticle.id);
+        setRelatedPost(related);
       } catch (error) {
         setError(error.message);
       }
@@ -52,7 +64,6 @@ function SingleArticle() {
 
   useEffect(() => {
     if (singleArticle) {
-      console.log(singleArticle);
       setShowCategorie(singleArticle.attributes.categories.data);
       setShowTags(singleArticle.attributes.tags.data);
     }
@@ -133,7 +144,7 @@ function SingleArticle() {
               <div className="mb-2 flex justify-between gap-4 items-center">
                 {showTags.length === 0 ? (
                   <ul>
-                    <li className="rounded-3xl bg-yellow-400 px-4 py-2 text-sm">
+                    <li className="rounded-xl bg-white hover:bg-neutral-50 px-4 py-2 text-sm">
                       notag
                     </li>
                   </ul>
@@ -158,6 +169,15 @@ function SingleArticle() {
             <RecentPost rPost={rPost} categories={categories} />
           </div>
         </div>
+      </div>
+
+      <div className="m-auto w-11/12 my-4 relatedpost mt-20">
+        <h2 className=" border-b pb-3 mb-6 text-2xl">Related posts</h2>
+        {relatedPost.length ? (
+          <BlogCard articles={relatedPost} />
+        ) : (
+          <p>Related Post Not Available</p>
+        )}
       </div>
     </>
   );

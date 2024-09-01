@@ -21,7 +21,7 @@ function Filter() {
     const getCategories = async () => {
       try {
         const getCategory = await fetchCategories();
-        console.log(getCategory);
+
         setCategories(getCategory);
       } catch (error) {
         console.log(error);
