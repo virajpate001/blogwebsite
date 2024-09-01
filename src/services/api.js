@@ -87,3 +87,14 @@ export const fetchSingleTag = async (slug) => {
     throw new Error("Data Not Found");
   }
 };
+
+export const fetchRecentArticles = async () => {
+  try {
+    const response = await axios.get(
+      `${API_URL}?sort[0]=publishedAt:desc&pagination[limit]=5&populate=*`
+    );
+    return response.data.data;
+  } catch (error) {
+    throw new Error("Data Not Found");
+  }
+};

@@ -4,6 +4,7 @@ import {
   fetchAllArticles,
   fetchArticlespagination,
   fetchCategories,
+  fetchRecentArticles,
   fetchTags,
 } from "../services/api";
 import { Link } from "react-router-dom";
@@ -13,6 +14,7 @@ const Testing = () => {
   const [error, setError] = useState("");
   const [myCategories, setMycategories] = useState([]);
   const [tags, setTags] = useState([]);
+  const [rPost, setRpost] = useState([]);
 
   useEffect(() => {
     const getArticle = async () => {
@@ -42,9 +44,20 @@ const Testing = () => {
       }
     };
 
-    getArticle();
-    getCategories();
-    getTags();
+    const getRecentArticle = async () => {
+      try {
+        const getRecentArt = await fetchRecentArticles();
+        console.log(getRecentArt);
+        setRpost(getRecentArt);
+      } catch (error) {
+        setError(error);
+      }
+    };
+
+    // getArticle();
+    // getCategories();
+    // getTags();
+    getRecentArticle();
   }, []);
 
   if (error) {
@@ -56,24 +69,15 @@ const Testing = () => {
       <h1>Testing 1</h1>
 
       <div>
-        <ul className=" bg-slate-300">
-          {tags.map((tags) => (
-            <li key={tags.id}>
-              <Link to={`/category/${tags.attributes.slug}`}>
-                {tags.attributes.Name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div>
         <ul>
-          {/* {console.log(myCategories)} */}
-          {myCategories.map((mycate) => (
-            <li key={mycate.id}>
-              <Link to={`/category/${mycate.attributes.slug}`}>
-                {mycate.attributes.Name}
+          {rPost.map((rPost) => (
+            <li key={rPost.id}>
+              <img
+                src={rPost.attributes.profile_img.data.attributes.url}
+                className=" w-20 h-20 object-cover"
+              />
+              <Link to={`/category/${rPost.attributes.slug}`}>
+                {rPost.attributes.Title}
               </Link>
             </li>
           ))}
