@@ -55,7 +55,7 @@ const TagsPage = () => {
                       />
                     </Link>
                   </div>
-                  <Link to={`/post/${article.id}`}>
+                  <Link to={`/post/${article.attributes.slug}`}>
                     <div className="px-4 py-6">
                       <div className="mb-2 flex justify-between">
                         <p className="name">Viraj Pate</p>

@@ -9,7 +9,7 @@ const API_URL_TAGS = "http://localhost:1337/api/tags";
 export const fetchArticles = async (pageNumber, itemsPerPage) => {
   try {
     const response = await axios.get(
-      `${API_URL}/?page=${pageNumber}&limit=${itemsPerPage}`
+      `${API_URL}/?page=${pageNumber}&limit=${itemsPerPage}&populate=*`
     );
     return response.data;
   } catch (error) {
@@ -87,8 +87,3 @@ export const fetchSingleTag = async (slug) => {
     throw new Error("Data Not Found");
   }
 };
-
-// export const fetchArticleCount = async () => {
-// 	const response = await axios.get(`${API_URL}/count`);
-// 	return response.data;
-//   };

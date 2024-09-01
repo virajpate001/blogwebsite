@@ -40,6 +40,7 @@ function SingleArticle() {
 
   return (
     <>
+      <div>{console.log(singleArticle)}</div>
       <div className="w-full px-4 py-4">
         <div className="m-auto w-full bg-cover text-center text-white">
           <img
@@ -75,7 +76,9 @@ function SingleArticle() {
             )}
 
             <div className="flex gap-4">
-              <p className="name">Viraj Pate</p>
+              <p className="name">
+                {singleArticle.attributes.author.data.attributes.Name}
+              </p>
               {/* <p className="date text-sm text-gray-500">May 20, 2021</p> */}
               {/* {singleArticle.attributes.createdAt} */}
 
