@@ -20,6 +20,7 @@ import { CiMenuFries } from "react-icons/ci";
 import logo from "../assets/img/logo.png";
 import { Link } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
+import SearchBar from "./SearchBar";
 
 const nestedMenuItems = [
   {
@@ -200,9 +201,7 @@ export default function NavigationbarWithDropdownMultilevelMenu() {
           <NavList />
         </div>
         <div className="hidden gap-2 lg:flex">
-          <button>
-            <CiSearch className=" text-black text-2xl" />
-          </button>
+          <SearchBar />
         </div>
         <IconButton
           variant="text"
