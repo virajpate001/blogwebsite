@@ -8,7 +8,7 @@ import {
 } from "@headlessui/react";
 import { IoCloseOutline } from "react-icons/io5";
 import { fetchAllArticles } from "../services/api";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const [open, setOpen] = useState(false);

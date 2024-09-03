@@ -7,8 +7,9 @@ import {
 } from "@headlessui/react";
 import { IoCloseOutline } from "react-icons/io5";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { Link } from "react-router-dom";
+
 import { fetchCategories, fetchTags } from "../services/api";
+import { Link, useNavigate } from "react-router-dom";
 
 function Filter() {
   const [open, setOpen] = useState(false);
@@ -16,6 +17,7 @@ function Filter() {
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getCategories = async () => {
@@ -40,6 +42,16 @@ function Filter() {
     getCategories();
     getTags();
   }, []);
+
+  const handleCategoryClick = (slug) => {
+    navigate(`/category/${slug}`);
+    setOpen(false);
+  };
+
+  const handleTagsClick = (slug) => {
+    navigate(`/tags/${slug}`);
+    setOpenTags(false);
+  };
 
   if (error) {
     return <div>{error}</div>;
@@ -102,31 +114,31 @@ function Filter() {
                 ) : (
                   <ul className="grid grid-cols-2 sm:grid-cols-4 gap-5">
                     {categories.map((allcategories) => (
-                      <li key={allcategories.id} className="flex">
-                        <Link to={`/category/${allcategories.attributes.slug}`}>
-                          <img
-                            src={
-                              allcategories.attributes.cat_img.data.attributes
-                                .url
-                            }
-                            alt=""
-                            className="w-12 rounded-lg mr-4"
-                          />
-                        </Link>
+                      <li
+                        key={allcategories.id}
+                        className="flex cursor-pointer"
+                        onClick={() =>
+                          handleCategoryClick(allcategories.attributes.slug)
+                        }
+                      >
+                        <img
+                          src={
+                            allcategories.attributes.cat_img.data.attributes.url
+                          }
+                          alt=""
+                          className="w-12 rounded-lg mr-4"
+                        />
+
                         <div>
-                          <Link
-                            to={`/category/${allcategories.attributes.slug}`}
-                          >
-                            <h2 className="catName">
-                              {allcategories.attributes.Name}
-                            </h2>
-                            <span>
-                              <span className="mr-2">
-                                {allcategories.attributes.articles.data.length}
-                              </span>
-                              Article
+                          <h2 className="catName">
+                            {allcategories.attributes.Name}
+                          </h2>
+                          <span>
+                            <span className="mr-2">
+                              {allcategories.attributes.articles.data.length}
                             </span>
-                          </Link>
+                            Article
+                          </span>
                         </div>
                       </li>
                     ))}
@@ -175,16 +187,18 @@ function Filter() {
                 ) : (
                   <ul className="grid grid-cols-2 sm:grid-cols-5 gap-5">
                     {tags.map((tags) => (
-                      <li key={tags.id} className="flex">
+                      <li
+                        key={tags.id}
+                        onClick={() => handleTagsClick(tags.attributes.slug)}
+                        className="flex cursor-pointer"
+                      >
                         <div>
-                          <Link to={`/tags/${tags.attributes.slug}`}>
-                            <h2 className="catName text-sm">
-                              {tags.attributes.Name}{" "}
-                              <span>
-                                ({tags.attributes.articles.data.length})
-                              </span>
-                            </h2>
-                          </Link>
+                          <h2 className="catName text-sm">
+                            {tags.attributes.Name}{" "}
+                            <span>
+                              ({tags.attributes.articles.data.length})
+                            </span>
+                          </h2>
                         </div>
                       </li>
                     ))}
