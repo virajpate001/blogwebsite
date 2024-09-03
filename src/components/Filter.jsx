@@ -33,7 +33,7 @@ function Filter() {
         const getTags = await fetchTags();
         setTags(getTags);
       } catch (error) {
-        setError(error);
+        setError(error.message);
       }
     };
 

@@ -77,6 +77,28 @@ export const fetchSingleCategory = async (slug) => {
   }
 };
 
+//for Category page
+export const fetchCategoryArticle = async (catid) => {
+  try {
+    const response = await axios.get(
+      `${API_URL}?populate=*&filters[categories][id][$eq]=${catid}`
+    );
+
+    return response.data.data;
+  } catch (error) {}
+};
+
+//for Tag page
+export const fetchTagsArticle = async (tagid) => {
+  try {
+    const response = await axios.get(
+      `${API_URL}?populate=*&filters[tags][id][$eq]=${tagid}`
+    );
+
+    return response.data.data;
+  } catch (error) {}
+};
+
 export const fetchSingleTag = async (slug) => {
   try {
     const response = await axios.get(

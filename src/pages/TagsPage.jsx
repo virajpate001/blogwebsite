@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { fetchSingleTag } from "../services/api";
+import { fetchSingleTag, fetchTagsArticle } from "../services/api";
 import Breadcrumb from "../components/MyBreadcrumb";
 import axios from "axios";
 import Filter from "../components/Filter";
@@ -22,12 +22,19 @@ const TagsPage = () => {
 
         // Fetch articles related to tags
 
-        const tagId = response[0];
+        const tagId = response[0].id;
 
-        const articlesResponse = await axios.get(
-          `http://localhost:1337/api/articles?populate=*&filters[tags][id][$eq]=${tagId.id}`
-        );
-        setArticle(articlesResponse.data.data);
+        const getTagArtiles = async () => {
+          const response = await fetchTagsArticle(tagId);
+          setArticle(response);
+        };
+
+        getTagArtiles();
+
+        // const articlesResponse = await axios.get(
+        //   `http://localhost:1337/api/articles?populate=*&filters[tags][id][$eq]=${tagId.id}`
+        // );
+        // setArticle(articlesResponse.data.data);
       } catch (error) {
         console.log(error);
       }

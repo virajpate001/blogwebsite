@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { fetchSingleCategory } from "../services/api";
+import { fetchCategoryArticle, fetchSingleCategory } from "../services/api";
 import axios from "axios";
 import Breadcrumb from "../components/MyBreadcrumb";
 import Filter from "../components/Filter";
@@ -11,6 +11,7 @@ const CategoryPage = () => {
   const { slug } = useParams();
   const [categoryName, setCategoryName] = useState("");
   const [articles, setArticle] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const getSingleCategory = async () => {
@@ -21,21 +22,30 @@ const CategoryPage = () => {
         setCategoryName(categoryName);
 
         // Fetch the articles related to this category
+        const catid = response[0].id;
 
-        const catid = response[0];
+        const getCategoryArtiles = async () => {
+          const response = await fetchCategoryArticle(catid);
+          setArticle(response);
+        };
 
-        const articlesResponse = await axios.get(
-          `http://localhost:1337/api/articles?populate=*&filters[categories][id][$eq]=${catid.id}`
-        );
-
-        setArticle(articlesResponse.data.data);
+        getCategoryArtiles();
       } catch (error) {
-        console.log(error);
+        setError(error.message);
       }
     };
 
     getSingleCategory();
   }, [slug]);
+
+  // loading and error code
+  if (articles.length === 0 && !error) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <>

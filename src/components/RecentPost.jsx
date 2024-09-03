@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const RecentPost = ({ rPost, categories }) => {
+  // loading and error code
+  if (rPost.length === 0 && categories.length === 0) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <div className="recent-post mb-8">
