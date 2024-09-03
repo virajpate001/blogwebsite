@@ -1,18 +1,17 @@
-import React from 'react'
-import Articles from '../components/Articles'
-import Breadcrumb from '../components/MyBreadcrumb'
-import Filter from '../components/Filter'
+import React from "react";
+import Articles from "../components/Articles";
+import Breadcrumb from "../components/MyBreadcrumb";
+import Filter from "../components/Filter";
+import breadcrumimg from "../assets/img/finel.jpg";
 
 function Blog() {
-	return (
-		<>
-			{/* <img src={bgimg} alt="" /> */}
-
-			<Breadcrumb pagename="Blog" />
-			<Filter />
-			<Articles />
-		</>
-	)
+  return (
+    <>
+      <Breadcrumb pagename="Blog" imgurl={breadcrumimg} />
+      <Filter />
+      <Articles />
+    </>
+  );
 }
 
-export default Blog
+export default Blog;

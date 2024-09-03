@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { fetchArticles, fetchArticlespagination } from "../services/api";
-import { Link } from "react-router-dom";
+import { fetchArticlespagination } from "../services/api";
 import Pagination from "./Pagination";
 import BlogCard from "./BlogCard";
 
 function Articles() {
   const [articles, setArticle] = useState([]);
-  const [categories, setCategorie] = useState([]);
   const [error, setError] = useState("");
   const [cpage, setPage] = useState(1);
   const pageSize = 8;

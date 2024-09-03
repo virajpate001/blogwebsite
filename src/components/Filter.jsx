@@ -6,7 +6,6 @@ import {
   DialogTitle,
 } from "@headlessui/react";
 import { IoCloseOutline } from "react-icons/io5";
-
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { fetchCategories, fetchTags } from "../services/api";
@@ -16,6 +15,7 @@ function Filter() {
   const [openTags, setOpenTags] = useState(false);
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const getCategories = async () => {
@@ -40,6 +40,10 @@ function Filter() {
     getCategories();
     getTags();
   }, []);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <>

@@ -92,7 +92,7 @@ const SearchBar = () => {
                   />
                 </div>
 
-                {showSuggestions && filteredTitles.length > 0 && (
+                {showSuggestions && filteredTitles.length > 0 ? (
                   <ul className="suggestions-list">
                     {filteredTitles.map((article) => (
                       <li
@@ -106,6 +106,8 @@ const SearchBar = () => {
                       </li>
                     ))}
                   </ul>
+                ) : (
+                  <p>No Found</p>
                 )}
               </div>
             </DialogPanel>

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/MyBreadcrumb";
 import axios from "axios";
 import Filter from "../components/Filter";
 import BlogCard from "../components/BlogCard";
+import breadcrumimg from "../assets/img/finel.jpg";
 
 const TagsPage = () => {
   const { slug } = useParams();
@@ -37,7 +38,7 @@ const TagsPage = () => {
 
   return (
     <>
-      <Breadcrumb pagename={tagName} />
+      <Breadcrumb pagename={tagName} imgurl={breadcrumimg} />
 
       <Filter />
 
