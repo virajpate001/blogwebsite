@@ -17,3 +17,43 @@ body{
   transition: position 1s ease-in-out;
     z-index: 99;
 }
+
+.sliderhight {
+  height: 600px;
+}
+
+
+
+.slick-dots{
+  text-align: right;
+  bottom: 20px;
+  right: 50px;
+}
+
+.slick-dots li.slick-active button:before{
+  color: #ffffff;
+  font-size: 10px;
+}
+
+.slick-dots li button:before{
+  font-size: 8px;
+  color: #fdfdfd;
+}
+
+.slick-next:before, .slick-prev:before{
+  color: #000;
+}
+
+.slick-dots li{
+  margin: 0;
+}
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+  .sliderhight {
+    height: 400px;
+  }
+}

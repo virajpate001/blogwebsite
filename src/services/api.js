@@ -6,6 +6,8 @@ const API_URL_CAT = "http://localhost:1337/api/categories";
 
 const API_URL_TAGS = "http://localhost:1337/api/tags";
 
+const API_SLIDER = "http://localhost:1337/api/sliders";
+
 export const fetchArticles = async (pageNumber, itemsPerPage) => {
   try {
     const response = await axios.get(
@@ -130,5 +132,16 @@ export const fetchRelatedArticle = async (categories, currentArticleId) => {
     );
 
     return response.data.data;
-  } catch (error) {}
+  } catch (error) {
+    throw new Error("Data Not Found");
+  }
+};
+
+export const fetchSliders = async () => {
+  try {
+    const response = await axios.get(`${API_SLIDER}?populate=*`);
+    return response.data.data;
+  } catch (error) {
+    throw new Error("Data Not Found");
+  }
 };
