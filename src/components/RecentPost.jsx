@@ -10,7 +10,9 @@ const RecentPost = ({ rPost, categories }) => {
   return (
     <div>
       <div className="recent-post mb-8">
-        <h2 className=" border-b pb-3 mb-4">Recent Post</h2>
+        <h2 className="mb-6 text-2xl md:text-2xl lg:text-3xl font-semibold">
+          Recent Post
+        </h2>
         <div>
           <ul>
             {rPost.map((rPost) => (
@@ -30,7 +32,9 @@ const RecentPost = ({ rPost, categories }) => {
         </div>
       </div>
       <div className="categories">
-        <h2 className=" border-b pb-3 mb-4">Categories</h2>
+        <h2 className="mb-6 text-2xl md:text-2xl lg:text-3xl font-semibold">
+          Categories
+        </h2>
         <div>
           {categories.length === 0 ? (
             <p className="text-center text-gray-500">No Categories Found</p>

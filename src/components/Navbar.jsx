@@ -22,30 +22,10 @@ import { Link } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import SearchBar from "./SearchBar";
 
-const nestedMenuItems = [
-  {
-    title: "Hero",
-  },
-  {
-    title: "Features",
-  },
-  {
-    title: "Testimonials",
-  },
-  {
-    title: "Ecommerce",
-  },
-];
-
 function NavListMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const [openNestedMenu, setopenNestedMenu] = React.useState(false);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  const renderItems = nestedMenuItems.map(({ title }, key) => (
-    <a href="#" key={key}>
-      <MenuItem>{title}</MenuItem>
-    </a>
-  ));
 
   return (
     <React.Fragment>
@@ -58,7 +38,7 @@ function NavListMenu() {
         <MenuHandler>
           <Typography as="div" variant="paragraph" className="font-medium ">
             <ListItem
-              className="flex  items-center gap-2 px-8 text-black  hover:bg-slate-100 hover:rounded-3xl"
+              className="flex  items-center gap-2 px-4 lg:px-8 text-black  hover:bg-slate-100 hover:rounded-3xl"
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
@@ -79,60 +59,30 @@ function NavListMenu() {
           </Typography>
         </MenuHandler>
         <MenuList className="hidden rounded-xl lg:block">
-          <Menu
-            placement="right-start"
-            allowHover
-            offset={15}
-            open={openNestedMenu}
-            handler={setopenNestedMenu}
-          >
-            <MenuHandler className="flex items-center justify-between">
-              <MenuItem>
-                Figma
-                <MdKeyboardArrowUp
-                  strokeWidth={2.5}
-                  className={`h-3.5 w-3.5 transition-transform ${
-                    isMenuOpen ? "rotate-90" : ""
-                  }`}
-                />
-              </MenuItem>
-            </MenuHandler>
-            <MenuList className="rounded-xl">{renderItems}</MenuList>
-          </Menu>
           <MenuItem>
-            <Link to={"/category/sport"}>Sport</Link>
+            <Link to={"/category/sport"} className="block">
+              Sport
+            </Link>
           </MenuItem>
           <MenuItem>
-            <Link to={"/category/learning"}>Learning</Link>
+            <Link to={"/category/learning"} className="block">
+              Learning
+            </Link>
           </MenuItem>
         </MenuList>
       </Menu>
       <div className="block text-black lg:hidden">
         <Collapse open={isMobileMenuOpen}>
-          <Menu
-            placement="bottom"
-            allowHover
-            offset={6}
-            open={openNestedMenu}
-            handler={setopenNestedMenu}
-          >
-            <MenuHandler className="flex items-center justify-between text-black">
-              <MenuItem>
-                Figma
-                <MdKeyboardArrowUp
-                  strokeWidth={2.5}
-                  className={`h-3.5 w-3.5 transition-transform ${
-                    isMenuOpen ? "rotate-90" : ""
-                  }`}
-                />
-              </MenuItem>
-            </MenuHandler>
-            <MenuList className="block rounded-xl lg:hidden">
-              {renderItems}
-            </MenuList>
-          </Menu>
-          <MenuItem>React</MenuItem>
-          <MenuItem>TailwindCSS</MenuItem>
+          <MenuItem>
+            <Link to={"/category/sport"} className="block">
+              Sport
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to={"/category/learning"} className="block">
+              Learning
+            </Link>
+          </MenuItem>
         </Collapse>
       </div>
     </React.Fragment>
@@ -149,17 +99,17 @@ function NavList() {
         Home
       </Link>
       <Link
-        to="about"
+        to={"about-us"}
         className="flex items-center gap-2 py-2 px-4 text-black  font-medium hover:bg-slate-100 hover:rounded-3xl"
       >
-        About
+        About us
       </Link>
       <NavListMenu />
       <Link
-        to="about"
+        to="contact-us"
         className="flex items-center gap-2 py-2 px-4 text-black font-medium hover:bg-slate-100 hover:rounded-3xl"
       >
-        Contact
+        Contact us
       </Link>
     </List>
   );
@@ -200,7 +150,7 @@ export default function NavigationbarWithDropdownMultilevelMenu() {
         <div className="hidden lg:block">
           <NavList />
         </div>
-        <div className="hidden gap-2 lg:flex">
+        <div className=" gap-2 lg:flex">
           <SearchBar />
         </div>
         <IconButton

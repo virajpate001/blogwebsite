@@ -15,6 +15,8 @@ import BrakeLink from "./pages/404.jsx";
 import Testing from "./pages/Testing.jsx";
 import CategoryPage from "./pages/CategoryPage.jsx";
 import TagsPage from "./pages/TagsPage.jsx";
+import Aboutus from "./pages/Aboutus.jsx";
+import Contactus from "./pages/Contactus.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
       {
         path: "testing",
         element: <Testing />,
+      },
+      {
+        path: "about-us",
+        element: <Aboutus />,
+      },
+      {
+        path: "contact-us",
+        element: <Contactus />,
       },
       {
         path: `/post/:slug`,
