@@ -15,23 +15,23 @@ const Footer = () => {
           </p>
         </div>
         <div className="mb-8 md:mb-0">
-          <ul className="flex gap-4 justify-center items-center h-full">
-            <li className="mb-2">
+          <ul className="flex flex-wrap text-center sm:flex-nowrap sm:flex-row gap-4 items-start justify-center sm:items-center h-full">
+            <li className="mb-2 w-45 sm:w-full">
               <Link to="/" className=" text-sm">
                 Home
               </Link>
             </li>
-            <li className="mb-2">
+            <li className="mb-2 w-45 sm:w-full">
               <Link to="/" className=" text-sm">
                 Home
               </Link>
             </li>
-            <li className="mb-2">
+            <li className="mb-2 w-45 sm:w-full">
               <Link to="/" className=" text-sm">
                 Home
               </Link>
             </li>
-            <li className="mb-2">
+            <li className="mb-2 w-45 sm:w-full">
               <Link to="/" className=" text-sm">
                 Home
               </Link>
@@ -39,7 +39,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="mb-8 md:mb-0">
-          <div className="flex gap-4 justify-end items-center h-full">
+          <div className="flex  gap-4 justify-end items-center h-full">
             <Link to="/">
               <FaFacebook className=" text-2xl" />
             </Link>

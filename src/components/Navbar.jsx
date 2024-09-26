@@ -146,7 +146,9 @@ export default function NavigationbarWithDropdownMultilevelMenu() {
       } mx-auto  px-4 py-2 bg-white rounded-none head`}
     >
       <div className="flex items-center justify-between w-11/12 mx-auto">
-        <img src={logo} className=" w-36" alt="logo" />
+        <Link to={"/"}>
+          <img src={logo} className=" w-36" alt="logo" />
+        </Link>
         <div className="hidden lg:block">
           <NavList />
         </div>
