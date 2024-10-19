@@ -12,8 +12,67 @@ body{
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.w-45{
+  width: 45%;
+}
+
 .stick{
   position: fixed;
   transition: position 1s ease-in-out;
     z-index: 99;
+}
+
+.sliderhight {
+  height: 600px;
+}
+
+
+
+.slick-dots{
+  text-align: right;
+  bottom: 20px;
+  right: 50px;
+}
+
+.slick-dots li.slick-active button:before{
+  color: #ffffff;
+  font-size: 10px;
+}
+
+.slick-dots li button:before{
+  font-size: 8px;
+  color: #fdfdfd;
+}
+
+.slick-next:before, .slick-prev:before{
+  color: #000;
+}
+
+.slick-dots li{
+  margin: 0;
+}
+
+
+.bgimg{
+  background-image: url("https://img.freepik.com/free-vector/copy-space-white-background_23-2148845470.jpg");
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+.glassmorphism{
+  background: rgb(255 255 255 / 11%);
+    backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur( 15px );
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+  .sliderhight {
+    height: 400px;
+  }
 }

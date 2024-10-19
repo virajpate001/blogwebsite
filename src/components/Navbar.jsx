@@ -17,35 +17,15 @@ import { IoIosArrowDown } from "react-icons/io";
 import { FaXmark } from "react-icons/fa6";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { CiMenuFries } from "react-icons/ci";
-import logo from "../assets/img/logo.png"
+import logo from "../assets/img/logo.png";
 import { Link } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
-
-
-const nestedMenuItems = [
-  {
-    title: "Hero",
-  },
-  {
-    title: "Features",
-  },
-  {
-    title: "Testimonials",
-  },
-  {
-    title: "Ecommerce",
-  },
-];
+import SearchBar from "./SearchBar";
 
 function NavListMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const [openNestedMenu, setopenNestedMenu] = React.useState(false);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  const renderItems = nestedMenuItems.map(({ title }, key) => (
-    <a href="#" key={key}>
-      <MenuItem>{title}</MenuItem>
-    </a>
-  ));
 
   return (
     <React.Fragment>
@@ -58,7 +38,7 @@ function NavListMenu() {
         <MenuHandler>
           <Typography as="div" variant="paragraph" className="font-medium ">
             <ListItem
-              className="flex  items-center gap-2 px-8 text-black  hover:bg-slate-100 hover:rounded-3xl"
+              className="flex  items-center gap-2 px-4 lg:px-8 text-black  hover:bg-slate-100 hover:rounded-3xl"
               selected={isMenuOpen || isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen((cur) => !cur)}
             >
@@ -79,56 +59,30 @@ function NavListMenu() {
           </Typography>
         </MenuHandler>
         <MenuList className="hidden rounded-xl lg:block">
-          <Menu
-            placement="right-start"
-            allowHover
-            offset={15}
-            open={openNestedMenu}
-            handler={setopenNestedMenu}
-          >
-            <MenuHandler className="flex items-center justify-between">
-              <MenuItem>
-                Figma
-                <MdKeyboardArrowUp
-                  strokeWidth={2.5}
-                  className={`h-3.5 w-3.5 transition-transform ${
-                    isMenuOpen ? "rotate-90" : ""
-                  }`}
-                />
-              </MenuItem>
-            </MenuHandler>
-            <MenuList className="rounded-xl">{renderItems}</MenuList>
-          </Menu>
-          <MenuItem>React</MenuItem>
-          <MenuItem>TailwindCSS</MenuItem>
+          <MenuItem>
+            <Link to={"/category/sport"} className="block">
+              Sport
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to={"/category/learning"} className="block">
+              Learning
+            </Link>
+          </MenuItem>
         </MenuList>
       </Menu>
       <div className="block text-black lg:hidden">
         <Collapse open={isMobileMenuOpen}>
-          <Menu
-            placement="bottom"
-            allowHover
-            offset={6}
-            open={openNestedMenu}
-            handler={setopenNestedMenu}
-          >
-            <MenuHandler className="flex items-center justify-between text-black">
-              <MenuItem>
-                Figma
-                <MdKeyboardArrowUp
-                  strokeWidth={2.5}
-                  className={`h-3.5 w-3.5 transition-transform ${
-                    isMenuOpen ? "rotate-90" : ""
-                  }`}
-                />
-              </MenuItem>
-            </MenuHandler>
-            <MenuList className="block rounded-xl lg:hidden">
-              {renderItems}
-            </MenuList>
-          </Menu>
-          <MenuItem>React</MenuItem>
-          <MenuItem>TailwindCSS</MenuItem>
+          <MenuItem>
+            <Link to={"/category/sport"} className="block">
+              Sport
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to={"/category/learning"} className="block">
+              Learning
+            </Link>
+          </MenuItem>
         </Collapse>
       </div>
     </React.Fragment>
@@ -138,10 +92,25 @@ function NavListMenu() {
 function NavList() {
   return (
     <List className="mb-6 mt-4 p-0 lg:mb-0 lg:mt-0 lg:flex-row lg:p-1">
-      <Link to="/" className="flex items-center gap-2 py-2  px-4 text-black font-medium hover:bg-slate-100 hover:rounded-3xl">Home</Link>
-      <Link to="about" className="flex items-center gap-2 py-2 px-4 text-black  font-medium hover:bg-slate-100 hover:rounded-3xl">About</Link>
+      <Link
+        to="/"
+        className="flex items-center gap-2 py-2  px-4 text-black font-medium hover:bg-slate-100 hover:rounded-3xl"
+      >
+        Home
+      </Link>
+      <Link
+        to={"about-us"}
+        className="flex items-center gap-2 py-2 px-4 text-black  font-medium hover:bg-slate-100 hover:rounded-3xl"
+      >
+        About us
+      </Link>
       <NavListMenu />
-      <Link to="about" className="flex items-center gap-2 py-2 px-4 text-black font-medium hover:bg-slate-100 hover:rounded-3xl">Contact</Link>
+      <Link
+        to="contact-us"
+        className="flex items-center gap-2 py-2 px-4 text-black font-medium hover:bg-slate-100 hover:rounded-3xl"
+      >
+        Contact us
+      </Link>
     </List>
   );
 }
@@ -150,7 +119,6 @@ export default function NavigationbarWithDropdownMultilevelMenu() {
   const [openNav, setOpenNav] = React.useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -161,11 +129,8 @@ export default function NavigationbarWithDropdownMultilevelMenu() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-
-    
+    window.addEventListener("scroll", handleScroll);
   }, []);
-
 
   React.useEffect(() => {
     window.addEventListener(
@@ -175,18 +140,20 @@ export default function NavigationbarWithDropdownMultilevelMenu() {
   }, []);
 
   return (
-    <Navbar  className={`${scrolled ? 'stick' : ''} mx-auto  px-4 py-2 bg-white rounded-none head`}>
+    <Navbar
+      className={`${
+        scrolled ? "stick" : ""
+      } mx-auto  px-4 py-2 bg-white rounded-none head`}
+    >
       <div className="flex items-center justify-between w-11/12 mx-auto">
-        
-        <img src={logo} className=" w-36" alt="logo"/>
+        <Link to={"/"}>
+          <img src={logo} className=" w-36" alt="logo" />
+        </Link>
         <div className="hidden lg:block">
           <NavList />
         </div>
-        <div className="hidden gap-2 lg:flex">
-        
-        <button><CiSearch className=" text-black text-2xl" /></button>
-
-         
+        <div className=" gap-2 lg:flex">
+          <SearchBar />
         </div>
         <IconButton
           variant="text"
@@ -202,7 +169,6 @@ export default function NavigationbarWithDropdownMultilevelMenu() {
       </div>
       <Collapse open={openNav}>
         <NavList />
-      
       </Collapse>
     </Navbar>
   );
