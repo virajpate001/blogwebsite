@@ -11,7 +11,6 @@ import {
 } from "../services/api";
 import RecentPost from "../components/RecentPost";
 import HomeArticles from "../components/HomeArticles";
-import CategoryList from "../components/CategoryList";
 
 function Home() {
   const [slider, setSlider] = useState([]);
@@ -50,7 +49,34 @@ function Home() {
 
   return (
     <>
-      <Articles />
+      <div className=" px-8 py-8 sm:px-12 ">
+        <MainSlider mainslider={slider} />
+
+        <div className=" py-8">
+          <div className="flex flex-wrap gap-14">
+            <div className="w-full sm:w-3/4">
+              <div className=" mb-6">
+                <h2 class="text-2xl md:text-2xl lg:text-3xl font-semibold">
+                  Trending Posts
+                </h2>
+              </div>
+              <HomeArticles />
+              <div className="mt-10 text-center">
+                <Link
+                  to={"/blog"}
+                  className="rounded-3xl bg-yellow-400 px-4 py-2 text-sm"
+                  href="/category/learning"
+                >
+                  View More
+                </Link>
+              </div>
+            </div>
+            <div className="w-full sm:w-1/5">
+              <RecentPost rPost={rPost} categories={categories} />
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
