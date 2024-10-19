@@ -22,6 +22,8 @@ function SingleArticle() {
   const [categories, setCategories] = useState([]);
   const [relatedPost, setRelatedPost] = useState([]);
 
+  console.log(singleArticle);
+
   useEffect(() => {
     const getsArticle = async () => {
       try {
