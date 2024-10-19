@@ -1,12 +1,12 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:1337/api/articles";
+const API_URL = "https://blog-backend-bm3m.onrender.com/api/articles";
 
-const API_URL_CAT = "http://localhost:1337/api/categories";
+const API_URL_CAT = "https://blog-backend-bm3m.onrender.com/api/categories";
 
-const API_URL_TAGS = "http://localhost:1337/api/tags";
+const API_URL_TAGS = "https://blog-backend-bm3m.onrender.com/api/tags";
 
-const API_SLIDER = "http://localhost:1337/api/sliders";
+const API_SLIDER = "https://blog-backend-bm3m.onrender.com/api/sliders";
 
 export const fetchArticles = async (pageNumber, itemsPerPage) => {
   try {
